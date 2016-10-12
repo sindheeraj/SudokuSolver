@@ -20,23 +20,24 @@ public class Cell {
     return new Cell();
   }
 
-  public void fixValue(int next) {
+  public void fixValue(int val) {
     ArrayList<Integer> toRemove = new ArrayList<>();
     for (Integer i : possibleChoices) {
-      if (i != next) {
+      if (i != val) {
         toRemove.add(i);
       }
     }
 
     toRemove.forEach(possibleChoices::remove);
-    value = next;
+    value = val;
   }
 
-  public boolean hasFixedValue() {
+  public boolean fixIfOnlyOnePossibleValue() {
     if (possibleChoices.size() == 1) {
       this.value = possibleChoices.get(0);
+      return true;
     }
-    return this.value != -1;
+    return false;
   }
 
   public int getValue() {
@@ -48,5 +49,13 @@ public class Cell {
       throw new RuntimeException("Trying to remove only remaining possibility.");
     }
     this.possibleChoices.remove((Integer) value);
+  }
+
+  public boolean valuePossible(Integer value) {
+    return this.possibleChoices.contains(value);
+  }
+
+  public boolean hasFixedValue() {
+    return this.value != -1;
   }
 }
