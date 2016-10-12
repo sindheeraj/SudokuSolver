@@ -64,4 +64,20 @@ public class Cell {
     }
     return possibleChoices.toString();
   }
+
+  /**
+   * true if it has the same possible values as cell and the size of possible values is 2.
+   */
+  public boolean isDuetWith(Cell cell) {
+    return this.possibleChoices.size() == 2 && this.possibleChoices.equals(cell.possibleChoices);
+  }
+
+  public boolean removePossibility(Cell cell) {
+    boolean eliminated = false;
+    for (Integer val : cell.possibleChoices) {
+      eliminated = removePossibility(val) || eliminated;
+    }
+
+    return eliminated;
+  }
 }

@@ -1,5 +1,6 @@
 package net.dheeru.sudoku.solver.strategy;
 
+import net.dheeru.sudoku.solver.strategy.eliminate.DuetsEliminate;
 import net.dheeru.sudoku.solver.strategy.eliminate.EliminateStrategy;
 import net.dheeru.sudoku.solver.strategy.eliminate.SameColumnEliminate;
 import net.dheeru.sudoku.solver.strategy.eliminate.SameRowEliminate;
@@ -22,6 +23,7 @@ public class Strategies {
         new SameColumnEliminate(),
         new SameRowEliminate(),
         new SameSubBoardEliminate(),
+        new DuetsEliminate(),
     };
   }
 
