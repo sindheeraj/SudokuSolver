@@ -1,4 +1,4 @@
-package net.dheeru.sudoku.solver.strategy;
+package net.dheeru.sudoku.solver.strategy.fixvalue;
 
 import net.dheeru.sudoku.solver.Board;
 import net.dheeru.sudoku.solver.Cell;

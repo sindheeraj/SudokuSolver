@@ -61,10 +61,19 @@ public class Board {
   public void print() {
     for (Cell[] rowCells : this.cells) {
       for (Cell cell : rowCells) {
-        System.out.print(cell.getValue() + "\t");
+        System.out.print(format(cell.toString()));
       }
       System.out.println();
     }
     System.out.println();
+  }
+
+  private String format(String s) {
+    String str = s;
+    for (int i = s.length(); i < 20; i++) {
+      str = str + " ";
+    }
+
+    return str;
   }
 }

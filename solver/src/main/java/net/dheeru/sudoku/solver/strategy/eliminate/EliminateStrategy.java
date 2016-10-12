@@ -1,4 +1,4 @@
-package net.dheeru.sudoku.solver.strategy;
+package net.dheeru.sudoku.solver.strategy.eliminate;
 
 import net.dheeru.sudoku.solver.Board;
 

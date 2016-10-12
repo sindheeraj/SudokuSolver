@@ -1,7 +1,7 @@
 package net.dheeru.sudoku.solver;
 
-import net.dheeru.sudoku.solver.strategy.EliminateStrategy;
-import net.dheeru.sudoku.solver.strategy.FixValueStrategy;
+import net.dheeru.sudoku.solver.strategy.eliminate.EliminateStrategy;
+import net.dheeru.sudoku.solver.strategy.fixvalue.FixValueStrategy;
 import net.dheeru.sudoku.solver.strategy.Strategies;
 
 /**

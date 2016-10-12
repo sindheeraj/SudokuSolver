@@ -1,5 +1,15 @@
 package net.dheeru.sudoku.solver.strategy;
 
+import net.dheeru.sudoku.solver.strategy.eliminate.EliminateStrategy;
+import net.dheeru.sudoku.solver.strategy.eliminate.SameColumnEliminate;
+import net.dheeru.sudoku.solver.strategy.eliminate.SameRowEliminate;
+import net.dheeru.sudoku.solver.strategy.eliminate.SameSubBoardEliminate;
+import net.dheeru.sudoku.solver.strategy.fixvalue.CellOnePossibilityFix;
+import net.dheeru.sudoku.solver.strategy.fixvalue.FixValueStrategy;
+import net.dheeru.sudoku.solver.strategy.fixvalue.OnlyPossibilityInColumnFix;
+import net.dheeru.sudoku.solver.strategy.fixvalue.OnlyPossibilityInRowFix;
+import net.dheeru.sudoku.solver.strategy.fixvalue.OnlyPossibilityInSubBoardFix;
+
 /**
  * Strategies to eliminate choices.
  */

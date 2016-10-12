@@ -56,4 +56,12 @@ public class Cell {
   public void print() {
     System.out.println(possibleChoices.toString() + " " + this.value);
   }
+
+  @Override
+  public String toString() {
+    if (this.value != -1) {
+      return this.value + "";
+    }
+    return possibleChoices.toString();
+  }
 }
