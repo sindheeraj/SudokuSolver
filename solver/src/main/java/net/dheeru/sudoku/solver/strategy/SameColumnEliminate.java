@@ -15,7 +15,12 @@ public class SameColumnEliminate implements EliminateStrategy {
     for (int i = 0; i < 9; i++) {
       for (int j = 0; j < 9; j++) {
         if (cells[i][j].hasFixedValue()) {
-          eliminateSomething = eliminate(cells, i, j) || eliminateSomething;
+          try {
+            eliminateSomething = eliminate(cells, i, j) || eliminateSomething;
+          } catch (RuntimeException ex) {
+            board.print();
+            throw ex;
+          }
         }
       }
     }
@@ -27,7 +32,12 @@ public class SameColumnEliminate implements EliminateStrategy {
     boolean eliminateSth = false;
     for (int i = 0; i < 9; i++) {
       if (i != x) {
-        eliminateSth = cells[i][y].removePossibility(cells[x][y].getValue()) || eliminateSth;
+        try {
+          eliminateSth = cells[i][y].removePossibility(cells[x][y].getValue()) || eliminateSth;
+        } catch (RuntimeException ex) {
+          System.out.println(x + " " + y + " " + i + " ");
+          throw ex;
+        }
       }
     }
 

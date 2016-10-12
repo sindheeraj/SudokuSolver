@@ -21,14 +21,8 @@ public class Cell {
   }
 
   public void fixValue(int val) {
-    ArrayList<Integer> toRemove = new ArrayList<>();
-    for (Integer i : possibleChoices) {
-      if (i != val) {
-        toRemove.add(i);
-      }
-    }
-
-    toRemove.forEach(possibleChoices::remove);
+    possibleChoices.clear();
+    possibleChoices.add(value);
     value = val;
   }
 
@@ -57,5 +51,9 @@ public class Cell {
 
   public boolean hasFixedValue() {
     return this.value != -1;
+  }
+
+  public void print() {
+    System.out.println(possibleChoices.toString() + " " + this.value);
   }
 }

@@ -1,5 +1,7 @@
 package net.dheeru.sudoku.solver;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 /**
@@ -18,6 +20,18 @@ public class Board {
 
   public void readInputFromStdin() {
     final Scanner in = new Scanner(System.in);
+    for (int i = 0; i < 9; i++) {
+      for (int j = 0; j < 9; j++) {
+        int next = in.nextInt();
+        if (next != -1) {
+          cells[i][j].fixValue(next);
+        }
+      }
+    }
+  }
+
+  public void readInputFromFile(String file) throws FileNotFoundException {
+    final Scanner in = new Scanner(new FileInputStream(file));
     for (int i = 0; i < 9; i++) {
       for (int j = 0; j < 9; j++) {
         int next = in.nextInt();
@@ -47,10 +61,10 @@ public class Board {
   public void print() {
     for (Cell[] rowCells : this.cells) {
       for (Cell cell : rowCells) {
-        System.out.print(cell.getValue() + " ");
+        System.out.print(cell.getValue() + "\t");
       }
       System.out.println();
     }
-
+    System.out.println();
   }
 }

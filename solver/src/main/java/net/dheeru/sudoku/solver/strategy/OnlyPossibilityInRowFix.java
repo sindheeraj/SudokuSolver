@@ -15,6 +15,7 @@ public class OnlyPossibilityInRowFix implements FixValueStrategy {
     for (int value = 1; value <= 9; value++) {
       for (int i = 0; i < 9; i++) {
         int numChoices = 0;
+        boolean alreadyPresent = false;
         int lastJ = -1;
         for (int j = 0; j < 9; j++) {
           if (!cells[i][j].hasFixedValue()) {
@@ -22,10 +23,12 @@ public class OnlyPossibilityInRowFix implements FixValueStrategy {
               numChoices++;
               lastJ = j;
             }
+          } else if (cells[i][j].getValue() == value) {
+            alreadyPresent = true;
           }
         }
 
-        if (numChoices == 1) {
+        if (numChoices == 1 && !alreadyPresent) {
           cells[i][lastJ].fixValue(value);
           fixedAValue = true;
         }

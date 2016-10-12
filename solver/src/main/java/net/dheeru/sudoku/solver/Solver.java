@@ -8,9 +8,13 @@ import net.dheeru.sudoku.solver.strategy.Strategies;
  * Used to solve the sudoku.
  */
 public class Solver {
-  public static void main(String args[]) {
+  public static void main(String args[]) throws Exception {
     final Board board = new Board();
-    board.readInputFromStdin();
+    if (args.length == 0) {
+      board.readInputFromStdin();
+    } else {
+      board.readInputFromFile(args[0]);
+    }
 
     solve(board);
   }
@@ -18,6 +22,7 @@ public class Solver {
   private static void solve(final Board board) {
     final EliminateStrategy[] eliminationStrategies = Strategies.getEliminationStrategies();
     final FixValueStrategy[] fixValueStrategies = Strategies.getFixValueStrategies();
+    board.print();
 
     boolean changed = true;
     while (changed) {
@@ -28,6 +33,7 @@ public class Solver {
 
       for (FixValueStrategy fixValueStrategy : fixValueStrategies) {
         changedThisRound = fixValueStrategy.fixValue(board) || changedThisRound;
+        board.print();
       }
 
       changed = changedThisRound;
