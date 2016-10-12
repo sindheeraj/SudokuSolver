@@ -8,23 +8,29 @@ import net.dheeru.sudoku.solver.Cell;
  */
 public class SameColumnEliminate implements EliminateStrategy {
   @Override
-  public void runStrategy(Board board) {
+  public boolean runStrategy(Board board) {
     final Cell[][] cells = board.getCells();
+    boolean eliminateSomething = false;
 
     for (int i = 0; i < 9; i++) {
       for (int j = 0; j < 9; j++) {
         if (cells[i][j].hasFixedValue()) {
-          eliminate(cells, i, j);
+          eliminateSomething = eliminate(cells, i, j) || eliminateSomething;
         }
       }
     }
+
+    return eliminateSomething;
   }
 
-  private void eliminate(Cell[][] cells, int x, int y) {
+  private boolean eliminate(Cell[][] cells, int x, int y) {
+    boolean eliminateSth = false;
     for (int i = 0; i < 9; i++) {
       if (i != x) {
-        cells[i][y].removePossibility(cells[x][y].getValue());
+        eliminateSth = cells[i][y].removePossibility(cells[x][y].getValue()) || eliminateSth;
       }
     }
+
+    return eliminateSth;
   }
 }

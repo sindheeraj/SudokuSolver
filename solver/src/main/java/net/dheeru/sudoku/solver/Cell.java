@@ -33,7 +33,7 @@ public class Cell {
   }
 
   public boolean fixIfOnlyOnePossibleValue() {
-    if (possibleChoices.size() == 1) {
+    if (possibleChoices.size() == 1 && this.value == -1) {
       this.value = possibleChoices.get(0);
       return true;
     }
@@ -44,11 +44,11 @@ public class Cell {
     return this.value;
   }
 
-  public void removePossibility(int value) {
-    if (this.possibleChoices.size() == 1) {
+  public boolean removePossibility(int value) {
+    if (this.possibleChoices.size() == 1 && this.possibleChoices.get(0) == value) {
       throw new RuntimeException("Trying to remove only remaining possibility.");
     }
-    this.possibleChoices.remove((Integer) value);
+    return this.possibleChoices.remove((Integer) value);
   }
 
   public boolean valuePossible(Integer value) {

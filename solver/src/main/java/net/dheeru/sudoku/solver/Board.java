@@ -31,4 +31,26 @@ public class Board {
   public Cell[][] getCells() {
     return this.cells;
   }
+
+  public boolean isSolved() {
+    for (Cell[] rowCells : this.cells) {
+      for (Cell cell : rowCells) {
+        if (!cell.hasFixedValue()) {
+          return false;
+        }
+      }
+    }
+
+    return true;
+  }
+
+  public void print() {
+    for (Cell[] rowCells : this.cells) {
+      for (Cell cell : rowCells) {
+        System.out.print(cell.getValue() + " ");
+      }
+      System.out.println();
+    }
+
+  }
 }

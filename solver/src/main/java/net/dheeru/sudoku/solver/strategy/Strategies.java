@@ -7,7 +7,7 @@ public class Strategies {
   private Strategies() {
   }
 
-  public EliminateStrategy[] getEliminationStrategies() {
+  public static EliminateStrategy[] getEliminationStrategies() {
     return new EliminateStrategy[] {
         new SameColumnEliminate(),
         new SameRowEliminate(),
@@ -15,7 +15,7 @@ public class Strategies {
     };
   }
 
-  public FixValueStrategy[] getFixValueStrategies() {
+  public static FixValueStrategy[] getFixValueStrategies() {
     return new FixValueStrategy[] {
         new CellOnePossibilityFix(),
         new OnlyPossibilityInColumnFix(),

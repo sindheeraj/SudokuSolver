@@ -6,5 +6,5 @@ import net.dheeru.sudoku.solver.Board;
  * Interface for implementing any net.dheeru.sudoku.solver.strategy to eliminate choices.
  */
 public interface EliminateStrategy {
-  void runStrategy(Board board);
+  boolean runStrategy(Board board);
 }

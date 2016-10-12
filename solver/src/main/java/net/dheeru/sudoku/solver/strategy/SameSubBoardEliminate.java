@@ -8,19 +8,23 @@ import net.dheeru.sudoku.solver.Cell;
  */
 public class SameSubBoardEliminate implements EliminateStrategy {
   @Override
-  public void runStrategy(Board board) {
+  public boolean runStrategy(Board board) {
     final Cell[][] cells = board.getCells();
 
+    boolean eliminateSomething = false;
     for (int i = 0; i < 9; i++) {
       for (int j = 0; j < 9; j++) {
         if (cells[i][j].hasFixedValue()) {
-          eliminate(cells, i, j);
+          eliminateSomething = eliminate(cells, i, j) || eliminateSomething;
         }
       }
     }
+
+    return eliminateSomething;
   }
 
-  private void eliminate(Cell[][] cells, int x, int y) {
+  private boolean eliminate(Cell[][] cells, int x, int y) {
+    boolean eliminateSomething = false;
     final int startX = (x / 3) * 3;
     final int endX = startX + 3;
     final int startY = (y / 3) * 3;
@@ -28,9 +32,11 @@ public class SameSubBoardEliminate implements EliminateStrategy {
     for (int i = startX; i < endX; i++) {
       for (int j = startY; j < endY; j++) {
         if (i != x || j != y) {
-          cells[i][j].removePossibility(cells[x][y].getValue());
+          eliminateSomething = cells[i][j].removePossibility(cells[x][y].getValue()) || eliminateSomething;
         }
       }
     }
+
+    return eliminateSomething;
   }
 }
