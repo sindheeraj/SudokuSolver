@@ -11,7 +11,7 @@ public class Strategies {
     return new EliminateStrategy[] {
         new SameColumnEliminate(),
         new SameRowEliminate(),
-        new SameSubBoardEliminate()
+        new SameSubBoardEliminate(),
     };
   }
 
@@ -19,7 +19,8 @@ public class Strategies {
     return new FixValueStrategy[] {
         new CellOnePossibilityFix(),
         new OnlyPossibilityInColumnFix(),
-        new OnlyPossibilityInRowFix()
+        new OnlyPossibilityInRowFix(),
+        new OnlyPossibilityInSubBoardFix(),
     };
   }
 }

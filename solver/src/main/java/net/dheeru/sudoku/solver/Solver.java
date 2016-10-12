@@ -25,7 +25,7 @@ public class Solver {
     board.print();
 
     boolean changed = true;
-    while (changed) {
+    while (changed && !board.isSolved()) {
       boolean changedThisRound = false;
       for (EliminateStrategy eliminateStrategy : eliminationStrategies) {
         changedThisRound = eliminateStrategy.runStrategy(board) || changedThisRound;
